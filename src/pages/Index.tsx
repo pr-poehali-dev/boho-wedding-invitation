@@ -308,25 +308,18 @@ export default function Index() {
           <h2 className="boho-section__title boho-section__title--center">Контакты</h2>
           <p className="boho-contacts__text">Мы с радостью ответим на все ваши вопросы</p>
           <div className="boho-contacts-list">
-            <a href="tel:+79990001122" className="boho-contact-item">
+            <a href="tel:+79872101312" className="boho-contact-item">
               <Icon name="Phone" size={20} />
               <div>
                 <span className="boho-contact-item__name">Александр</span>
-                <span>+7 (999) 000-11-22</span>
+                <span>+7 (987) 210-13-12</span>
               </div>
             </a>
-            <a href="tel:+79993334455" className="boho-contact-item">
+            <a href="tel:+79274473211" className="boho-contact-item">
               <Icon name="Phone" size={20} />
               <div>
                 <span className="boho-contact-item__name">Виктория</span>
-                <span>+7 (999) 333-44-55</span>
-              </div>
-            </a>
-            <a href="mailto:wedding@example.com" className="boho-contact-item">
-              <Icon name="Mail" size={20} />
-              <div>
-                <span className="boho-contact-item__name">Почта</span>
-                <span>wedding@example.com</span>
+                <span>+7 (927) 447-32-11</span>
               </div>
             </a>
           </div>

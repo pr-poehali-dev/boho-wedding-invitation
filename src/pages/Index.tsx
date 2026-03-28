@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/18e4a4df-9420-4450-8fdc-cb4ce053bbb9.jpg";
-const FLORAL_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/2c7e7619-b432-4db2-b69d-59615321ccfc.jpg";
+const HERO_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/5db35806-c75c-407e-9a4f-2233ed2f9d39.jpg";
+const FLORAL_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/4724a437-3f87-4ca4-96da-596aa2e75a81.jpg";
 
 const schedule = [
   { time: "14:00", title: "Сбор гостей", desc: "Приветственные напитки и фотозона" },
@@ -86,10 +86,10 @@ export default function Index() {
           <div className="boho-info-card">
             <span className="boho-info-card__icon">🌿</span>
             <h2 className="boho-section__title">Где</h2>
-            <p className="boho-info-card__big">Усадьба «Берёзовая роща»</p>
-            <p className="boho-info-card__sub">Рублёво-Успенское ш., 42, Подмосковье</p>
+            <p className="boho-info-card__big">Вилла «Небеса»</p>
+            <p className="boho-info-card__sub">Казань, ул. Техническая, 4Б</p>
             <a
-              href="https://maps.google.com/?q=Рублёво-Успенское+шоссе+42+Подмосковье"
+              href="https://maps.google.com/?q=Казань+Техническая+4Б"
               target="_blank"
               rel="noopener noreferrer"
               className="boho-map-btn"
@@ -102,8 +102,8 @@ export default function Index() {
         <div className="boho-container boho-map-wrap">
           <div className="boho-map-placeholder">
             <Icon name="MapPin" size={40} />
-            <p>Усадьба «Берёзовая роща»</p>
-            <p className="boho-map-placeholder__sub">Рублёво-Успенское ш., 42</p>
+            <p>Вилла «Небеса»</p>
+            <p className="boho-map-placeholder__sub">Казань, ул. Техническая, 4Б</p>
           </div>
         </div>
       </section>
@@ -152,11 +152,6 @@ export default function Index() {
               <span>💳</span>
               <h3>Денежный подарок</h3>
               <p>Переведите на карту или вручите в конверте на торжестве</p>
-            </div>
-            <div className="boho-gift-card">
-              <span>✈️</span>
-              <h3>Медовый месяц</h3>
-              <p>Мы мечтаем о путешествии — любой вклад будет очень дорог</p>
             </div>
             <div className="boho-gift-card">
               <span>🌺</span>

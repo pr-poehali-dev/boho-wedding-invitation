@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "POST rsvp - attending yes",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тестовый Гость",
+        "phone": "+79990000000",
+        "attending": "yes",
+        "guests": 2,
+        "menu": "meat",
+        "dietNote": ""
+      },
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "GET rsvp list",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    }
+  ]
+}

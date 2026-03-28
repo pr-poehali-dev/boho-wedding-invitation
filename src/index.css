@@ -6,96 +6,709 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Boho palette */
+    --boho-cream: #f9f4ee;
+    --boho-rose: #f5eae6;
+    --boho-sage: #e8ede6;
+    --boho-text: #3d2e25;
+    --boho-text-muted: #7a6355;
+    --boho-accent: #b07c60;
+    --boho-accent-dark: #8c5e44;
+    --boho-gold: #c9a96e;
+    --boho-divider: #d4b89a;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ═══════════════════════════════════════
+   BOHO ROOT
+═══════════════════════════════════════ */
+.boho-root {
+  font-family: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  color: var(--boho-text);
+  background: var(--boho-cream);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.boho-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.boho-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+
+.boho-hero:hover .boho-hero__bg {
+  transform: scale(1.1);
+}
+
+.boho-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(249, 244, 238, 0.55) 0%,
+    rgba(249, 244, 238, 0.72) 50%,
+    rgba(249, 244, 238, 0.88) 100%
+  );
+}
+
+.boho-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  animation: bohoFadeUp 1.2s ease both;
+}
+
+@keyframes bohoFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boho-eyebrow {
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+  color: var(--boho-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.boho-eyebrow--center {
+  text-align: center;
+}
+
+.boho-hero__names {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--boho-text);
+  letter-spacing: -0.01em;
+}
+
+.boho-hero__amp {
+  font-family: "Caveat", cursive;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--boho-accent);
+}
+
+.boho-hero__divider {
+  width: 80px;
+  height: 1px;
+  background: var(--boho-divider);
+  margin: 1.5rem auto;
+}
+
+.boho-hero__date {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: var(--boho-text);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.boho-hero__sub {
+  font-family: "Caveat", cursive;
+  font-size: 1.3rem;
+  color: var(--boho-text-muted);
+}
+
+.boho-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--boho-accent);
+  animation: bohoScroll 2s ease-in-out infinite;
+  z-index: 2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@keyframes bohoScroll {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 1;
+  }
+}
+
+/* ═══════════════════════════════════════
+   FLORAL DIVIDER
+═══════════════════════════════════════ */
+.boho-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: -2px 0;
+}
+
+.boho-divider img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.boho-divider.flipped img {
+  transform: scaleX(-1);
+}
+
+.boho-divider--sm img {
+  height: 80px;
+}
+
+/* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+.boho-section {
+  padding: 5rem 1.5rem;
+}
+
+.boho-section--cream {
+  background: var(--boho-cream);
+}
+.boho-section--rose {
+  background: var(--boho-rose);
+}
+.boho-section--sage {
+  background: var(--boho-sage);
+}
+
+.boho-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.boho-container--narrow {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.boho-center {
+  text-align: center;
+}
+
+.boho-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .boho-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.boho-section__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--boho-text);
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+
+.boho-section__title--center {
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   INFO CARDS (когда / где)
+═══════════════════════════════════════ */
+.boho-info-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(212, 184, 154, 0.4);
+  border-radius: 1.25rem;
+  padding: 2rem 1.75rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.boho-info-card__icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.boho-info-card__big {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--boho-text);
+  margin-bottom: 0.4rem;
+}
+
+.boho-info-card__sub {
+  font-size: 0.95rem;
+  color: var(--boho-text-muted);
+  margin-bottom: 1rem;
+}
+
+.boho-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.25rem;
+  border: 1px solid var(--boho-divider);
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  color: var(--boho-accent);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.boho-map-btn:hover {
+  background: var(--boho-accent);
+  color: #fff;
+  border-color: var(--boho-accent);
+}
+
+.boho-map-wrap {
+  margin-top: 2.5rem;
+}
+
+.boho-map-placeholder {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed var(--boho-divider);
+  border-radius: 1.25rem;
+  padding: 3rem;
+  text-align: center;
+  color: var(--boho-text-muted);
+}
+
+.boho-map-placeholder p {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--boho-text);
+}
+
+.boho-map-placeholder__sub {
+  font-size: 0.9rem !important;
+  color: var(--boho-text-muted) !important;
+}
+
+/* ═══════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════ */
+.boho-timeline {
+  position: relative;
+  padding-left: 0;
+  margin-top: 2.5rem;
+}
+
+.boho-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--boho-divider);
+}
+
+@media (max-width: 480px) {
+  .boho-timeline::before {
+    left: 4rem;
+  }
+}
+
+.boho-timeline__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  animation: bohoFadeUp 0.6s ease both;
+}
+
+.boho-timeline__time {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  color: var(--boho-accent);
+  width: 4.5rem;
+  flex-shrink: 0;
+  text-align: right;
+  padding-top: 2px;
+}
+
+.boho-timeline__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--boho-gold);
+  border: 2px solid var(--boho-cream);
+  box-shadow: 0 0 0 2px var(--boho-divider);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.boho-timeline__event {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--boho-text);
+  margin-bottom: 0.2rem;
+}
+
+.boho-timeline__desc {
+  font-size: 0.9rem;
+  color: var(--boho-text-muted);
+}
+
+/* ═══════════════════════════════════════
+   GIFTS
+═══════════════════════════════════════ */
+.boho-gifts__text {
+  text-align: center;
+  color: var(--boho-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.boho-gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .boho-gifts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.boho-gift-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(212, 184, 154, 0.35);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+}
+
+.boho-gift-card span {
+  font-size: 2.25rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.boho-gift-card h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--boho-text);
+  margin-bottom: 0.5rem;
+}
+
+.boho-gift-card p {
+  font-size: 0.88rem;
+  color: var(--boho-text-muted);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   RSVP FORM
+═══════════════════════════════════════ */
+.boho-rsvp__hint {
+  text-align: center;
+  color: var(--boho-text-muted);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.boho-form {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(212, 184, 154, 0.4);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 520px) {
+  .boho-form {
+    padding: 1.5rem;
+  }
+}
+
+.boho-form__field {
+  margin-bottom: 1.5rem;
+}
+
+.boho-form__field label {
+  display: block;
+  font-family: "Caveat", cursive;
+  font-size: 1.1rem;
+  color: var(--boho-accent-dark);
+  margin-bottom: 0.5rem;
+}
+
+.boho-form__field input,
+.boho-form__field select,
+.boho-form__field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(212, 184, 154, 0.5);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--boho-text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.boho-form__field input:focus,
+.boho-form__field select:focus,
+.boho-form__field textarea:focus {
+  border-color: var(--boho-accent);
+  box-shadow: 0 0 0 3px rgba(176, 124, 96, 0.15);
+}
+
+.boho-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .boho-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.boho-radio-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.boho-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid rgba(212, 184, 154, 0.5);
+  border-radius: 2rem;
+  cursor: pointer;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  color: var(--boho-text-muted);
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.boho-radio input {
+  display: none;
+}
+
+.boho-radio.active {
+  background: var(--boho-accent);
+  color: #fff;
+  border-color: var(--boho-accent);
+}
+
+.boho-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--boho-accent);
+  color: #fff;
+  border: none;
+  border-radius: 3rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+.boho-submit:hover:not(:disabled) {
+  background: var(--boho-accent-dark);
+  transform: translateY(-1px);
+}
+
+.boho-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.boho-submit__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.boho-rsvp__success {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(212, 184, 154, 0.4);
+  border-radius: 1.5rem;
+  animation: bohoFadeUp 0.6s ease both;
+}
+
+.boho-rsvp__success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.boho-rsvp__success h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  color: var(--boho-text);
+  margin-bottom: 0.75rem;
+}
+
+.boho-rsvp__success p {
+  color: var(--boho-text-muted);
+  font-size: 1.05rem;
+}
+
+/* ═══════════════════════════════════════
+   CONTACTS
+═══════════════════════════════════════ */
+.boho-contacts__text {
+  color: var(--boho-text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.boho-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.boho-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.75rem;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(212, 184, 154, 0.35);
+  border-radius: 1rem;
+  text-decoration: none;
+  color: var(--boho-text);
+  min-width: 280px;
+  transition: all 0.2s;
+}
+
+.boho-contact-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(176, 124, 96, 0.15);
+}
+
+.boho-contact-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.boho-contact-item__name {
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  color: var(--boho-accent);
+}
+
+.boho-contact-item span:last-child {
+  font-size: 0.95rem;
+  color: var(--boho-text-muted);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.boho-footer {
+  background: var(--boho-cream);
+  text-align: center;
+  padding: 0 1.5rem 4rem;
+}
+
+.boho-footer__names {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--boho-text);
+  margin-bottom: 0.4rem;
+}
+
+.boho-footer__date {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  color: var(--boho-accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.15em;
+}
+
+.boho-footer__tagline {
+  font-size: 0.95rem;
+  color: var(--boho-text-muted);
+  letter-spacing: 0.1em;
 }

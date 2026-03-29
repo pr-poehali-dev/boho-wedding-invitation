@@ -22,10 +22,10 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b0
 const FLORAL_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/4724a437-3f87-4ca4-96da-596aa2e75a81.jpg";
 
 const schedule = [
-  { time: "14:00", title: "Сбор гостей", desc: "Приветственные напитки и фотозона" },
-  { time: "15:00", title: "Церемония", desc: "Торжественная регистрация брака" },
-  { time: "16:00", title: "Фуршет", desc: "Лёгкие закуски, игристое, фотосессия" },
-  { time: "17:30", title: "Банкет", desc: "Праздничный ужин и первые танцы" },
+  { time: "16:00", title: "Сбор гостей", desc: "Приветственные напитки и фотозона" },
+  { time: "16:30", title: "Церемония", desc: "Торжественная регистрация брака" },
+  { time: "17:00", title: "Фуршет", desc: "Лёгкие закуски, игристое, фотосессия" },
+  { time: "18:00", title: "Банкет", desc: "Праздничный ужин и первые танцы" },
   { time: "20:00", title: "Торт", desc: "Разрезание свадебного торта" },
   { time: "21:00", title: "Вечеринка", desc: "Живая музыка и танцы до рассвета" },
 ];
@@ -35,6 +35,7 @@ const menuOptions = [
   { id: "white_wine", label: "Вино белое" },
   { id: "whiskey", label: "Виски" },
   { id: "vodka", label: "Водка" },
+  { id: "soft", label: "Безалкогольные напитки" },
 ];
 
 type FormState = "idle" | "loading" | "success";
@@ -44,8 +45,7 @@ export default function Index() {
     name: "",
     phone: "",
     guests: "1",
-    menu: "red_wine",
-    dietNote: "",
+    menu: [] as string[],
     attending: "yes",
   });
   const [formState, setFormState] = useState<FormState>("idle");
@@ -111,7 +111,7 @@ export default function Index() {
           <div className="boho-info-card">
             <h2 className="boho-section__title">Когда</h2>
             <p className="boho-info-card__big">4 июля 2026</p>
-            <p className="boho-info-card__sub">Суббота · Начало в 14:00</p>
+            <p className="boho-info-card__sub">Суббота · Начало в 16:00</p>
           </div>
           <div className="boho-info-card">
             <h2 className="boho-section__title">Где</h2>
@@ -233,36 +233,37 @@ export default function Index() {
 
               {form.attending === "yes" && (
                 <>
-                  <div className="boho-form__row">
-                    <div className="boho-form__field">
-                      <label htmlFor="guests">Количество гостей</label>
-                      <select id="guests" name="guests" value={form.guests} onChange={handleChange}>
-                        <option value="1">Только я</option>
-                        <option value="2">Я + 1 гость</option>
-                        <option value="3">Я + 2 гостя</option>
-                      </select>
-                    </div>
-                    <div className="boho-form__field">
-                      <label htmlFor="menu">Предпочитаемый алкоголь</label>
-                      <select id="menu" name="menu" value={form.menu} onChange={handleChange}>
-                        {menuOptions.map((m) => (
-                          <option key={m.id} value={m.id}>
-                            {m.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                  <div className="boho-form__field">
+                    <label htmlFor="guests">Количество гостей</label>
+                    <select id="guests" name="guests" value={form.guests} onChange={handleChange}>
+                      <option value="1">Только я</option>
+                      <option value="2">Я + 1 гость</option>
+                    </select>
                   </div>
                   <div className="boho-form__field">
-                    <label htmlFor="dietNote">Пищевые ограничения или аллергии</label>
-                    <textarea
-                      id="dietNote"
-                      name="dietNote"
-                      placeholder="Укажите, если есть..."
-                      value={form.dietNote}
-                      onChange={handleChange}
-                      rows={3}
-                    />
+                    <label>Предпочитаемый алкоголь</label>
+                    <div className="boho-chips">
+                      {menuOptions.map((m) => {
+                        const active = form.menu.includes(m.id);
+                        return (
+                          <button
+                            key={m.id}
+                            type="button"
+                            className={`boho-chip ${active ? "boho-chip--active" : ""}`}
+                            onClick={() =>
+                              setForm((prev) => ({
+                                ...prev,
+                                menu: active
+                                  ? prev.menu.filter((x) => x !== m.id)
+                                  : [...prev.menu, m.id],
+                              }))
+                            }
+                          >
+                            {m.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               )}

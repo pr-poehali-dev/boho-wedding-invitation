@@ -790,3 +790,238 @@
   color: var(--boho-text-muted);
   letter-spacing: 0.1em;
 }
+
+/* ═══════════════════════════════════════
+   GUESTS PAGE
+═══════════════════════════════════════ */
+.guests-page {
+  min-height: 100vh;
+  background: var(--boho-cream);
+  padding: 0 1rem 4rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--boho-text);
+}
+
+.guests-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.guests-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--boho-accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.guests-back:hover {
+  color: var(--boho-accent-dark);
+}
+
+.guests-title {
+  flex: 1;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--boho-text);
+  margin: 0;
+}
+
+.guests-refresh {
+  background: none;
+  border: 1px solid rgba(212, 184, 154, 0.5);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--boho-accent);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.guests-refresh:hover {
+  background: rgba(176, 124, 96, 0.1);
+}
+
+.guests-stats {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+}
+
+.guests-stat {
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(212, 184, 154, 0.35);
+  border-radius: 1rem;
+  padding: 1.25rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.guests-stat--accent {
+  background: var(--boho-accent);
+  border-color: var(--boho-accent);
+}
+
+.guests-stat--accent .guests-stat__num,
+.guests-stat--accent .guests-stat__label {
+  color: #fff;
+}
+
+.guests-stat--muted {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.guests-stat__num {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--boho-text);
+  line-height: 1;
+}
+
+.guests-stat__label {
+  font-size: 0.82rem;
+  color: var(--boho-text-muted);
+  font-family: sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.guests-section {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.guests-section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--boho-accent-dark);
+  font-family: "Caveat", cursive;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.guests-section__title--muted {
+  color: var(--boho-text-muted);
+}
+
+.guests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guests-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(212, 184, 154, 0.35);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.guests-card--muted {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.75;
+}
+
+.guests-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.guests-card__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--boho-text);
+}
+
+.guests-card__date {
+  font-size: 0.8rem;
+  color: var(--boho-text-muted);
+  font-family: sans-serif;
+}
+
+.guests-card__member {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  border-top: 1px solid rgba(212, 184, 154, 0.2);
+  flex-wrap: wrap;
+}
+
+.guests-card__member-name {
+  font-size: 1rem;
+  color: var(--boho-text);
+  min-width: 140px;
+}
+
+.guests-card__drinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.guests-card__drink {
+  background: rgba(176, 124, 96, 0.12);
+  color: var(--boho-accent-dark);
+  border-radius: 2rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.82rem;
+  font-family: sans-serif;
+}
+
+.guests-loading,
+.guests-error,
+.guests-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 1rem;
+  color: var(--boho-text-muted);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.guests-error button {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--boho-accent);
+  border-radius: 2rem;
+  background: none;
+  color: var(--boho-accent);
+  cursor: pointer;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  transition: all 0.2s;
+}
+
+.guests-error button:hover {
+  background: var(--boho-accent);
+  color: #fff;
+}

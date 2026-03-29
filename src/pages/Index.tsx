@@ -43,10 +43,11 @@ type FormState = "idle" | "loading" | "success";
 export default function Index() {
   const [form, setForm] = useState({
     name: "",
-    phone: "",
     guests: "1",
-    menu: [] as string[],
+    drinks: [] as string[],
     attending: "yes",
+    guestName: "",
+    guestDrinks: [] as string[],
   });
   const [formState, setFormState] = useState<FormState>("idle");
   const refWhen = useFadeUp();
@@ -58,6 +59,16 @@ export default function Index() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const toggleDrink = (field: "drinks" | "guestDrinks", id: string) => {
+    setForm((prev) => {
+      const current = prev[field];
+      return {
+        ...prev,
+        [field]: current.includes(id) ? current.filter((x) => x !== id) : [...current, id],
+      };
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -204,35 +215,37 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="boho-form__row">
-                <div className="boho-form__field">
-                  <label htmlFor="name">Ваше имя *</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Имя и фамилия"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="boho-form__field">
-                  <label htmlFor="phone">Телефон *</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+7 (999) 000-00-00"
-                    value={form.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+              <div className="boho-form__field">
+                <label htmlFor="name">Ваше имя *</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Имя и фамилия"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               {form.attending === "yes" && (
                 <>
+                  <div className="boho-form__field">
+                    <label>Предпочитаемый напиток</label>
+                    <div className="boho-chips">
+                      {menuOptions.map((m) => (
+                        <button
+                          key={m.id}
+                          type="button"
+                          className={`boho-chip ${form.drinks.includes(m.id) ? "boho-chip--active" : ""}`}
+                          onClick={() => toggleDrink("drinks", m.id)}
+                        >
+                          {m.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
                   <div className="boho-form__field">
                     <label htmlFor="guests">Количество гостей</label>
                     <select id="guests" name="guests" value={form.guests} onChange={handleChange}>
@@ -240,31 +253,39 @@ export default function Index() {
                       <option value="2">Я + 1 гость</option>
                     </select>
                   </div>
-                  <div className="boho-form__field">
-                    <label>Предпочитаемый алкоголь</label>
-                    <div className="boho-chips">
-                      {menuOptions.map((m) => {
-                        const active = form.menu.includes(m.id);
-                        return (
-                          <button
-                            key={m.id}
-                            type="button"
-                            className={`boho-chip ${active ? "boho-chip--active" : ""}`}
-                            onClick={() =>
-                              setForm((prev) => ({
-                                ...prev,
-                                menu: active
-                                  ? prev.menu.filter((x) => x !== m.id)
-                                  : [...prev.menu, m.id],
-                              }))
-                            }
-                          >
-                            {m.label}
-                          </button>
-                        );
-                      })}
+
+                  {form.guests === "2" && (
+                    <div className="boho-guest2-block">
+                      <p className="boho-guest2-block__title">Данные гостя</p>
+                      <div className="boho-form__field">
+                        <label htmlFor="guestName">Имя гостя *</label>
+                        <input
+                          id="guestName"
+                          name="guestName"
+                          type="text"
+                          placeholder="Имя и фамилия"
+                          value={form.guestName}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="boho-form__field">
+                        <label>Предпочитаемый напиток</label>
+                        <div className="boho-chips">
+                          {menuOptions.map((m) => (
+                            <button
+                              key={m.id}
+                              type="button"
+                              className={`boho-chip ${form.guestDrinks.includes(m.id) ? "boho-chip--active" : ""}`}
+                              onClick={() => toggleDrink("guestDrinks", m.id)}
+                            >
+                              {m.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </>
               )}
 

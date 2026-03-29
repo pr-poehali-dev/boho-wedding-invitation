@@ -586,7 +586,24 @@
   border-color: var(--boho-accent);
 }
 
-/* ── Chips (мультивыбор алкоголя) ── */
+/* ── Блок второго гостя ── */
+.boho-guest2-block {
+  border: 1px solid rgba(212, 184, 154, 0.45);
+  border-radius: 1.1rem;
+  padding: 1.25rem 1.25rem 0.25rem;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.boho-guest2-block__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--boho-accent-dark);
+  margin-bottom: 1rem;
+}
+
+/* ── Chips (мультивыбор напитков) ── */
 .boho-chips {
   display: flex;
   flex-wrap: wrap;

@@ -1,10 +1,10 @@
 import json
 import os
-import psycopg2  # noqa
+import psycopg2  # v3
 
 
 def handler(event: dict, context) -> dict:
-    """Сохраняет ответ гостя на свадебное приглашение в базу данных."""
+    """Сохраняет ответ гостя на свадебное приглашение. Каждый гость — отдельная строка в БД."""
     cors = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -18,7 +18,7 @@ def handler(event: dict, context) -> dict:
         conn = psycopg2.connect(os.environ["DATABASE_URL"])
         cur = conn.cursor()
         cur.execute(
-            "SELECT id, name, phone, attending, guests, menu, diet_note, created_at FROM rsvp ORDER BY created_at DESC"
+            "SELECT id, submitter_name, attending, guest_name, drinks, is_primary, created_at FROM rsvp ORDER BY created_at DESC"
         )
         rows = cur.fetchall()
         cur.close()
@@ -26,13 +26,12 @@ def handler(event: dict, context) -> dict:
         result = [
             {
                 "id": r[0],
-                "name": r[1],
-                "phone": r[2],
-                "attending": r[3],
-                "guests": r[4],
-                "menu": r[5],
-                "diet_note": r[6],
-                "created_at": r[7].isoformat(),
+                "submitter_name": r[1],
+                "attending": r[2],
+                "guest_name": r[3],
+                "drinks": r[4],
+                "is_primary": r[5],
+                "created_at": r[6].isoformat(),
             }
             for r in rows
         ]
@@ -40,20 +39,31 @@ def handler(event: dict, context) -> dict:
 
     if event.get("httpMethod") == "POST":
         body = json.loads(event.get("body") or "{}")
-        name = body.get("name", "").strip()
-        phone = body.get("phone", "").strip()
+        submitter_name = body.get("name", "").strip()
         attending = body.get("attending", "yes")
-        guests = int(body.get("guests", 1))
-        menu = body.get("menu", "meat")
-        diet_note = body.get("dietNote", "").strip()
+        drinks = body.get("drinks", [])
+        guest_name = body.get("guestName", "").strip()
+        guest_drinks = body.get("guestDrinks", [])
 
         conn = psycopg2.connect(os.environ["DATABASE_URL"])
         cur = conn.cursor()
+
+        # Строка для главного гостя
         cur.execute(
-            "INSERT INTO rsvp (name, phone, attending, guests, menu, diet_note) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id",
-            (name, phone, attending, guests, menu, diet_note),
+            "INSERT INTO rsvp (submitter_name, attending, guest_name, drinks, is_primary) VALUES (%s, %s, %s, %s, %s) RETURNING id",
+            (submitter_name, attending, submitter_name, drinks, True),
         )
-        new_id = cur.fetchone()[0]
+        primary_id = cur.fetchone()[0]
+
+        # Строка для второго гостя (если есть)
+        second_id = None
+        if attending == "yes" and guest_name:
+            cur.execute(
+                "INSERT INTO rsvp (submitter_name, attending, guest_name, drinks, is_primary) VALUES (%s, %s, %s, %s, %s) RETURNING id",
+                (submitter_name, attending, guest_name, guest_drinks, False),
+            )
+            second_id = cur.fetchone()[0]
+
         conn.commit()
         cur.close()
         conn.close()
@@ -61,7 +71,7 @@ def handler(event: dict, context) -> dict:
         return {
             "statusCode": 200,
             "headers": cors,
-            "body": json.dumps({"ok": True, "id": new_id}, ensure_ascii=False),
+            "body": json.dumps({"ok": True, "id": primary_id, "guest_id": second_id}, ensure_ascii=False),
         }
 
     return {"statusCode": 405, "headers": cors, "body": json.dumps({"error": "Method not allowed"})}

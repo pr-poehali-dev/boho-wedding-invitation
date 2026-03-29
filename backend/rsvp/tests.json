@@ -1,26 +1,42 @@
 {
   "tests": [
     {
-      "name": "POST rsvp - attending yes",
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST один гость",
       "method": "POST",
       "path": "/",
       "body": {
-        "name": "Тестовый Гость",
-        "phone": "+79990000000",
+        "name": "Иван Иванов",
         "attending": "yes",
-        "guests": 2,
-        "menu": "meat",
-        "dietNote": ""
+        "drinks": ["red_wine", "soft"],
+        "guestName": "",
+        "guestDrinks": []
       },
-      "expectedStatus": 200,
-      "bodyMatcher": "partial"
+      "expectedStatus": 200
     },
     {
-      "name": "GET rsvp list",
+      "name": "POST два гостя",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Мария Петрова",
+        "attending": "yes",
+        "drinks": ["white_wine"],
+        "guestName": "Пётр Сидоров",
+        "guestDrinks": ["vodka"]
+      },
+      "expectedStatus": 200
+    },
+    {
+      "name": "GET список гостей",
       "method": "GET",
       "path": "/",
-      "expectedStatus": 200,
-      "bodyMatcher": "partial"
+      "expectedStatus": 200
     }
   ]
 }

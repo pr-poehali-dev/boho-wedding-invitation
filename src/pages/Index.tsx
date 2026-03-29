@@ -1,5 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+
+function useFadeUp() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add("fade-up--visible"); observer.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
 
 const RSVP_URL = "https://functions.poehali.dev/9c6624c2-0e9a-428d-8165-89f64ab6c4e8";
 
@@ -34,6 +49,10 @@ export default function Index() {
     attending: "yes",
   });
   const [formState, setFormState] = useState<FormState>("idle");
+  const refWhen = useFadeUp();
+  const refProgram = useFadeUp();
+  const refRsvp = useFadeUp();
+  const refContacts = useFadeUp();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -87,7 +106,7 @@ export default function Index() {
       </div>
 
       {/* ── ДАТА & МЕСТО ── */}
-      <section className="boho-section boho-section--cream" id="when">
+      <section ref={refWhen as React.RefObject<HTMLElement>} className="boho-section boho-section--cream fade-up" id="when">
         <div className="boho-container boho-two-col">
           <div className="boho-info-card">
             <h2 className="boho-section__title">Когда</h2>
@@ -118,7 +137,7 @@ export default function Index() {
       </div>
 
       {/* ── ПРОГРАММА ── */}
-      <section className="boho-section boho-section--rose" id="program">
+      <section ref={refProgram as React.RefObject<HTMLElement>} className="boho-section boho-section--rose fade-up" id="program">
         <div className="boho-container boho-container--narrow">
           <p className="boho-eyebrow boho-eyebrow--center">День свадьбы</p>
           <h2 className="boho-section__title boho-section__title--center">Программа</h2>
@@ -143,7 +162,7 @@ export default function Index() {
       </div>
 
       {/* ── RSVP ── */}
-      <section className="boho-section boho-section--sage" id="rsvp">
+      <section ref={refRsvp as React.RefObject<HTMLElement>} className="boho-section boho-section--sage fade-up" id="rsvp">
         <div className="boho-container boho-container--narrow">
           <p className="boho-eyebrow boho-eyebrow--center">Ответ гостя</p>
           <h2 className="boho-section__title boho-section__title--center">Подтверждение</h2>
@@ -170,7 +189,7 @@ export default function Index() {
                       checked={form.attending === "yes"}
                       onChange={handleChange}
                     />
-                    С радостью приду 🌿
+                    С радостью приду
                   </label>
                   <label className={`boho-radio ${form.attending === "no" ? "active" : ""}`}>
                     <input
@@ -266,7 +285,7 @@ export default function Index() {
       </section>
 
       {/* ── КОНТАКТЫ ── */}
-      <section className="boho-section boho-section--cream" id="contacts">
+      <section ref={refContacts as React.RefObject<HTMLElement>} className="boho-section boho-section--cream fade-up" id="contacts">
         <div className="boho-container boho-container--narrow boho-center">
           <p className="boho-eyebrow boho-eyebrow--center">Есть вопросы?</p>
           <h2 className="boho-section__title boho-section__title--center">Контакты</h2>

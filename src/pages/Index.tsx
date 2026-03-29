@@ -16,9 +16,10 @@ const schedule = [
 ];
 
 const menuOptions = [
-  { id: "meat", label: "Мясное меню" },
-  { id: "fish", label: "Рыбное меню" },
-  { id: "veg", label: "Вегетарианское меню" },
+  { id: "red_wine", label: "Вино красное" },
+  { id: "white_wine", label: "Вино белое" },
+  { id: "whiskey", label: "Виски" },
+  { id: "vodka", label: "Водка" },
 ];
 
 type FormState = "idle" | "loading" | "success";
@@ -28,7 +29,7 @@ export default function Index() {
     name: "",
     phone: "",
     guests: "1",
-    menu: "meat",
+    menu: "red_wine",
     dietNote: "",
     attending: "yes",
   });
@@ -89,13 +90,11 @@ export default function Index() {
       <section className="boho-section boho-section--cream" id="when">
         <div className="boho-container boho-two-col">
           <div className="boho-info-card">
-            <span className="boho-info-card__icon">🌸</span>
             <h2 className="boho-section__title">Когда</h2>
             <p className="boho-info-card__big">4 июля 2026</p>
             <p className="boho-info-card__sub">Суббота · Начало в 14:00</p>
           </div>
           <div className="boho-info-card">
-            <span className="boho-info-card__icon">🌿</span>
             <h2 className="boho-section__title">Где</h2>
             <p className="boho-info-card__big">Вилла «Небеса»</p>
             <p className="boho-info-card__sub">Казань, ул. Техническая, 4Б</p>
@@ -110,13 +109,7 @@ export default function Index() {
             </a>
           </div>
         </div>
-        <div className="boho-container boho-map-wrap">
-          <div className="boho-map-placeholder">
-            <Icon name="MapPin" size={40} />
-            <p>Вилла «Небеса»</p>
-            <p className="boho-map-placeholder__sub">Казань, ул. Техническая, 4Б</p>
-          </div>
-        </div>
+
       </section>
 
       {/* ── DIVIDER ── */}
@@ -146,35 +139,6 @@ export default function Index() {
 
       {/* ── DIVIDER ── */}
       <div className="boho-divider">
-        <img src={FLORAL_DIVIDER} alt="" />
-      </div>
-
-      {/* ── ПОДАРКИ ── */}
-      <section className="boho-section boho-section--cream" id="gifts">
-        <div className="boho-container boho-container--narrow">
-          <p className="boho-eyebrow boho-eyebrow--center">Наши пожелания</p>
-          <h2 className="boho-section__title boho-section__title--center">Подарки</h2>
-          <p className="boho-gifts__text">
-            Самый дорогой подарок для нас — ваше присутствие. Если вы хотите порадовать нас чем-то
-            особенным, мы будем благодарны за денежный подарок на исполнение наших общих мечт.
-          </p>
-          <div className="boho-gifts-grid">
-            <div className="boho-gift-card">
-              <span>💳</span>
-              <h3>Денежный подарок</h3>
-              <p>Переведите на карту или вручите в конверте на торжестве</p>
-            </div>
-            <div className="boho-gift-card">
-              <span>🌺</span>
-              <h3>Живые цветы</h3>
-              <p>Выбирайте полевые цветы и пастельные тона</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DIVIDER ── */}
-      <div className="boho-divider flipped">
         <img src={FLORAL_DIVIDER} alt="" />
       </div>
 
@@ -260,7 +224,7 @@ export default function Index() {
                       </select>
                     </div>
                     <div className="boho-form__field">
-                      <label htmlFor="menu">Предпочтение меню</label>
+                      <label htmlFor="menu">Предпочитаемый алкоголь</label>
                       <select id="menu" name="menu" value={form.menu} onChange={handleChange}>
                         {menuOptions.map((m) => (
                           <option key={m.id} value={m.id}>

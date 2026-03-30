@@ -22,12 +22,11 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b0
 const FLORAL_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/4724a437-3f87-4ca4-96da-596aa2e75a81.jpg";
 
 const schedule = [
-  { time: "16:00", title: "Сбор гостей", desc: "Приветственные напитки и фотозона" },
+  { time: "16:00", title: "Сбор гостей", desc: "Фуршет" },
   { time: "16:30", title: "Церемония", desc: "Торжественная регистрация брака" },
-  { time: "17:00", title: "Фуршет", desc: "Лёгкие закуски, игристое, фотосессия" },
-  { time: "18:00", title: "Банкет", desc: "Праздничный ужин и первые танцы" },
-  { time: "20:00", title: "Торт", desc: "Разрезание свадебного торта" },
-  { time: "21:00", title: "Вечеринка", desc: "Живая музыка и танцы до рассвета" },
+  { time: "17:30", title: "Банкет", desc: "Праздничный ужин и первые танцы" },
+  { time: "22:00", title: "Вечеринка", desc: "Танцы и музыка" },
+  { time: "23:00", title: "Окончание вечера", desc: "" },
 ];
 
 const menuOptions = [

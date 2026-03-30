@@ -61,7 +61,46 @@ function formatDate(iso: string) {
   });
 }
 
+const PASSWORD = "04.07.2026";
+const STORAGE_KEY = "guests_auth";
+
+function PasswordGate({ onEnter }: { onEnter: () => void }) {
+  const [value, setValue] = useState("");
+  const [wrong, setWrong] = useState(false);
+
+  const submit = () => {
+    if (value === PASSWORD) {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+      onEnter();
+    } else {
+      setWrong(true);
+      setValue("");
+    }
+  };
+
+  return (
+    <div className="guests-gate">
+      <div className="guests-gate__box">
+        <p className="guests-gate__title">Список гостей</p>
+        <p className="guests-gate__hint">Введите пароль для доступа</p>
+        <input
+          className={`guests-gate__input${wrong ? " guests-gate__input--error" : ""}`}
+          type="password"
+          placeholder="Пароль"
+          value={value}
+          onChange={(e) => { setValue(e.target.value); setWrong(false); }}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
+          autoFocus
+        />
+        {wrong && <p className="guests-gate__error">Неверный пароль</p>}
+        <button className="guests-gate__btn" onClick={submit}>Войти</button>
+      </div>
+    </div>
+  );
+}
+
 export default function Guests() {
+  const [auth, setAuth] = useState(() => sessionStorage.getItem(STORAGE_KEY) === "1");
   const [rows, setRows] = useState<GuestRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

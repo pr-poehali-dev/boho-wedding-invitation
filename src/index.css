@@ -1026,6 +1026,90 @@
   color: #fff;
 }
 
+.guests-gate {
+  min-height: 100vh;
+  background: var(--boho-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.guests-gate__box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 184, 154, 0.4);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.guests-gate__title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--boho-text);
+  margin: 0;
+}
+
+.guests-gate__hint {
+  font-size: 0.95rem;
+  color: var(--boho-text-muted);
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.guests-gate__input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(212, 184, 154, 0.5);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  color: var(--boho-text);
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.05em;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.guests-gate__input:focus {
+  border-color: var(--boho-accent);
+}
+
+.guests-gate__input--error {
+  border-color: #c0392b;
+}
+
+.guests-gate__error {
+  font-size: 0.85rem;
+  color: #c0392b;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.guests-gate__btn {
+  margin-top: 0.5rem;
+  padding: 0.7rem 2rem;
+  background: var(--boho-accent);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.guests-gate__btn:hover {
+  background: var(--boho-accent-dark);
+}
+
 /* Password gate */
 .guests-gate {
   min-height: 100vh;

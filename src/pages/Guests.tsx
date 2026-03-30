@@ -126,6 +126,8 @@ export default function Guests() {
   const notComing = groups.filter((g) => g.attending !== "yes");
   const totalPeople = coming.reduce((s, g) => s + g.members.length, 0);
 
+  if (!auth) return <PasswordGate onEnter={() => setAuth(true)} />;
+
   return (
     <div className="guests-page">
       <div className="guests-header">

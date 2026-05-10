@@ -4,11 +4,12 @@ import Icon from "@/components/ui/icon";
 const RSVP_URL = "https://functions.poehali.dev/9c6624c2-0e9a-428d-8165-89f64ab6c4e8";
 
 const DRINK_LABELS: Record<string, string> = {
-  red_wine: "Вино красное",
+  red_wine:   "Вино красное",
   white_wine: "Вино белое",
-  whiskey: "Виски",
-  vodka: "Водка",
-  soft: "Безалкогольные",
+  whiskey:    "Виски",
+  vodka:      "Водка",
+  martini:    "Мартини",
+  soft:       "Безалкогольные",
 };
 
 interface GuestRow {
@@ -19,12 +20,14 @@ interface GuestRow {
   drinks: string[];
   is_primary: boolean;
   created_at: string;
+  track?: string;
 }
 
 interface GroupedRsvp {
   submitter_name: string;
   attending: string;
   created_at: string;
+  track?: string;
   members: { name: string; drinks: string[]; is_primary: boolean }[];
 }
 
@@ -37,6 +40,7 @@ function groupRows(rows: GuestRow[]): GroupedRsvp[] {
         submitter_name: row.submitter_name,
         attending: row.attending,
         created_at: row.created_at,
+        track: row.track,
         members: [],
       });
     }
@@ -53,11 +57,8 @@ function groupRows(rows: GuestRow[]): GroupedRsvp[] {
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleString("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+    day: "2-digit", month: "2-digit", year: "numeric",
+    hour: "2-digit", minute: "2-digit",
   });
 }
 
@@ -82,11 +83,12 @@ function PasswordGate({ onEnter }: { onEnter: () => void }) {
     <div className="guests-gate">
       <div className="guests-gate__box">
         <p className="guests-gate__title">Список гостей</p>
+        <p className="guests-gate__names">Александр & Виктория</p>
         <p className="guests-gate__hint">Введите пароль для доступа</p>
         <input
           className={`guests-gate__input${wrong ? " guests-gate__input--error" : ""}`}
           type="password"
-          placeholder="Пароль"
+          placeholder="··········"
           value={value}
           onChange={(e) => { setValue(e.target.value); setWrong(false); }}
           onKeyDown={(e) => e.key === "Enter" && submit()}
@@ -132,25 +134,25 @@ export default function Guests() {
     <div className="guests-page">
       <div className="guests-header">
         <a href="/" className="guests-back">
-          <Icon name="ArrowLeft" size={18} />
+          <Icon name="ArrowLeft" size={14} />
           На главную
         </a>
         <h1 className="guests-title">Ответы гостей</h1>
         <button className="guests-refresh" onClick={load}>
-          <Icon name="RefreshCw" size={16} />
+          <Icon name="RefreshCw" size={15} />
         </button>
       </div>
 
       {loading && (
         <div className="guests-loading">
-          <Icon name="Loader2" size={32} />
+          <Icon name="Loader2" size={28} />
           <p>Загружаем список…</p>
         </div>
       )}
 
       {error && (
         <div className="guests-error">
-          <Icon name="AlertCircle" size={24} />
+          <Icon name="AlertCircle" size={22} />
           <p>Не удалось загрузить данные</p>
           <button onClick={load}>Попробовать снова</button>
         </div>
@@ -176,7 +178,7 @@ export default function Guests() {
           {coming.length > 0 && (
             <section className="guests-section">
               <h2 className="guests-section__title">
-                <Icon name="Check" size={18} />
+                <Icon name="Check" size={14} />
                 Придут
               </h2>
               <div className="guests-list">
@@ -189,7 +191,7 @@ export default function Guests() {
                     {g.members.map((m, j) => (
                       <div className="guests-card__member" key={j}>
                         <span className="guests-card__member-name">
-                          {m.is_primary ? "👤" : "👥"} {m.name}
+                          {m.is_primary ? "◆" : "◇"} {m.name}
                         </span>
                         {m.drinks.length > 0 && (
                           <div className="guests-card__drinks">
@@ -202,6 +204,12 @@ export default function Guests() {
                         )}
                       </div>
                     ))}
+                    {g.track && (
+                      <p className="guests-track">
+                        <span className="guests-track__label">Трек</span>
+                        {g.track}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -211,7 +219,7 @@ export default function Guests() {
           {notComing.length > 0 && (
             <section className="guests-section">
               <h2 className="guests-section__title guests-section__title--muted">
-                <Icon name="X" size={18} />
+                <Icon name="X" size={14} />
                 Не смогут
               </h2>
               <div className="guests-list">

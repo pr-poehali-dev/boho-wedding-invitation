@@ -19,8 +19,8 @@ function useFadeUp() {
 const RSVP_URL = "https://functions.poehali.dev/9c6624c2-0e9a-428d-8165-89f64ab6c4e8";
 
 const HERO_IMG        = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/5db35806-c75c-407e-9a4f-2233ed2f9d39.jpg";
-const GYPSOPHILA_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/3299dbb1-cef7-4ec1-be49-6318f65bccb6.jpg";
-const CHANDELIER_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/2c22b73d-1259-4a71-9aab-3df65fd0ea23.jpg";
+const GYPSOPHILA_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/cbe036f9-9c3d-4d1b-9561-07c6d641373e.jpg";
+const CHANDELIER_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/d54d25b7-08dc-4fdd-9f1e-7f962b0b9b9f.jpg";
 
 const WEDDING_DATE = new Date("2026-07-04T16:00:00");
 

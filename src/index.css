@@ -33,16 +33,20 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Boho palette */
-    --boho-cream: #f9f4ee;
-    --boho-rose: #f5eae6;
-    --boho-sage: #e8ede6;
-    --boho-text: #3d2e25;
-    --boho-text-muted: #7a6355;
-    --boho-accent: #b07c60;
-    --boho-accent-dark: #8c5e44;
-    --boho-gold: #c9a96e;
-    --boho-divider: #d4b89a;
+    /* Crystal White Palette */
+    --w-white: #ffffff;
+    --w-snow: #f8f8f8;
+    --w-pearl: #f2f2f0;
+    --w-smoke: #e8e8e4;
+    --w-text: #1a1a1a;
+    --w-text-muted: #6b6b6b;
+    --w-black: #111111;
+    --w-border: rgba(0, 0, 0, 0.12);
+    --w-border-strong: rgba(0, 0, 0, 0.25);
+    --w-crystal: rgba(200, 210, 220, 0.35);
+    --w-accent: #1a1a1a;
+    --w-accent-hover: #333333;
+    --w-divider: rgba(0, 0, 0, 0.08);
   }
 
   * {
@@ -53,13 +57,16 @@
   }
 }
 
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Caveat:wght@400;500&display=swap");
+
 /* ═══════════════════════════════════════
-   BOHO ROOT
+   ROOT
 ═══════════════════════════════════════ */
 .boho-root {
-  font-family: "Cormorant Garamond", "Cormorant", Georgia, serif;
-  color: var(--boho-text);
-  background: var(--boho-cream);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--w-text);
+  background: var(--w-white);
   overflow-x: hidden;
 }
 
@@ -81,7 +88,7 @@
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
-  transition: transform 8s ease;
+  transition: transform 10s ease;
 }
 
 .boho-hero:hover .boho-hero__bg {
@@ -93,9 +100,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(249, 244, 238, 0.55) 0%,
-    rgba(249, 244, 238, 0.72) 50%,
-    rgba(249, 244, 238, 0.88) 100%
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.68) 50%,
+    rgba(255, 255, 255, 0.9) 100%
   );
 }
 
@@ -136,10 +143,10 @@
 
 .boho-eyebrow {
   font-family: "Caveat", cursive;
-  font-size: 1.25rem;
-  color: var(--boho-accent);
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--w-text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
 }
 
 .boho-eyebrow--center {
@@ -147,41 +154,47 @@
 }
 
 .boho-hero__names {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
   font-size: clamp(3rem, 10vw, 6.5rem);
   font-weight: 300;
   line-height: 1.1;
-  color: var(--boho-text);
-  letter-spacing: -0.01em;
+  color: var(--w-black);
+  letter-spacing: 0.02em;
 }
 
 .boho-hero__amp {
   font-family: "Caveat", cursive;
   font-size: clamp(2.5rem, 8vw, 5rem);
-  color: var(--boho-accent);
+  color: var(--w-text-muted);
 }
 
 .boho-hero__divider {
-  width: 80px;
-  height: 1px;
-  background: var(--boho-divider);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--w-black),
+    transparent
+  );
   margin: 1.5rem auto;
 }
 
 .boho-hero__date {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.3rem, 4vw, 2rem);
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  color: var(--boho-text);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: var(--w-text);
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
 .boho-hero__sub {
   font-family: "Caveat", cursive;
-  font-size: 1.3rem;
-  color: var(--boho-text-muted);
+  font-size: 1.25rem;
+  color: var(--w-text-muted);
+  letter-spacing: 0.03em;
 }
 
 .boho-scroll-hint {
@@ -189,22 +202,23 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--boho-accent);
+  color: var(--w-black);
   animation: bohoScroll 2s ease-in-out infinite;
   z-index: 2;
   cursor: pointer;
   text-decoration: none;
+  opacity: 0.5;
 }
 
 @keyframes bohoScroll {
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
-    opacity: 0.7;
+    opacity: 0.4;
   }
   50% {
     transform: translateX(-50%) translateY(8px);
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 
@@ -223,6 +237,7 @@
   height: 120px;
   object-fit: cover;
   display: block;
+  filter: grayscale(100%) brightness(1.15) contrast(0.85);
 }
 
 .boho-divider.flipped img {
@@ -241,13 +256,15 @@
 }
 
 .boho-section--cream {
-  background: var(--boho-cream);
+  background: var(--w-white);
 }
+
 .boho-section--rose {
-  background: var(--boho-rose);
+  background: var(--w-snow);
 }
+
 .boho-section--sage {
-  background: var(--boho-sage);
+  background: var(--w-pearl);
 }
 
 .boho-container {
@@ -277,12 +294,13 @@
 }
 
 .boho-section__title {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 300;
-  color: var(--boho-text);
+  color: var(--w-black);
   margin-bottom: 1.25rem;
   line-height: 1.1;
+  letter-spacing: 0.03em;
 }
 
 .boho-section__title--center {
@@ -293,12 +311,24 @@
    INFO CARDS (когда / где)
 ═══════════════════════════════════════ */
 .boho-info-card {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(212, 184, 154, 0.4);
-  border-radius: 1.25rem;
-  padding: 2rem 1.75rem;
+  background: var(--w-white);
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
+  padding: 2.5rem 2rem;
   text-align: center;
-  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.boho-info-card::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid var(--w-border);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .boho-info-card__icon {
@@ -308,60 +338,44 @@
 }
 
 .boho-info-card__big {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--boho-text);
+  font-weight: 400;
+  color: var(--w-black);
   margin-bottom: 0.4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .boho-info-card__sub {
-  font-size: 0.95rem;
-  color: var(--boho-text-muted);
+  font-size: 0.9rem;
+  color: var(--w-text-muted);
   margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
 
 .boho-map-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.55rem 1.25rem;
-  border: 1px solid var(--boho-divider);
-  border-radius: 2rem;
-  font-size: 0.9rem;
-  color: var(--boho-accent);
+  padding: 0.55rem 1.5rem;
+  border: 1px solid var(--w-black);
+  border-radius: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--w-black);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.25s;
+  position: relative;
+  z-index: 1;
 }
 
 .boho-map-btn:hover {
-  background: var(--boho-accent);
-  color: #fff;
-  border-color: var(--boho-accent);
-}
-
-.boho-map-wrap {
-  margin-top: 2.5rem;
-}
-
-.boho-map-placeholder {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px dashed var(--boho-divider);
-  border-radius: 1.25rem;
-  padding: 3rem;
-  text-align: center;
-  color: var(--boho-text-muted);
-}
-
-.boho-map-placeholder p {
-  margin-top: 0.75rem;
-  font-size: 1.1rem;
-  color: var(--boho-text);
-}
-
-.boho-map-placeholder__sub {
-  font-size: 0.9rem !important;
-  color: var(--boho-text-muted) !important;
+  background: var(--w-black);
+  color: var(--w-white);
 }
 
 /* ═══════════════════════════════════════
@@ -380,7 +394,14 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: var(--boho-divider);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--w-black) 10%,
+    var(--w-black) 90%,
+    transparent
+  );
+  opacity: 0.15;
 }
 
 @media (max-width: 480px) {
@@ -398,37 +419,38 @@
 }
 
 .boho-timeline__time {
-  font-family: "Caveat", cursive;
-  font-size: 1.2rem;
-  color: var(--boho-accent);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1rem;
+  color: var(--w-text-muted);
   width: 4.5rem;
   flex-shrink: 0;
   text-align: right;
   padding-top: 2px;
+  letter-spacing: 0.05em;
 }
 
 .boho-timeline__dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--boho-gold);
-  border: 2px solid var(--boho-cream);
-  box-shadow: 0 0 0 2px var(--boho-divider);
+  background: var(--w-white);
+  border: 2px solid var(--w-black);
   flex-shrink: 0;
   margin-top: 5px;
 }
 
 .boho-timeline__event {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--boho-text);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--w-black);
   margin-bottom: 0.2rem;
 }
 
 .boho-timeline__desc {
   font-size: 0.9rem;
-  color: var(--boho-text-muted);
+  color: var(--w-text-muted);
+  letter-spacing: 0.02em;
 }
 
 /* ═══════════════════════════════════════
@@ -436,7 +458,7 @@
 ═══════════════════════════════════════ */
 .boho-gifts__text {
   text-align: center;
-  color: var(--boho-text-muted);
+  color: var(--w-text-muted);
   font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 2.5rem;
@@ -455,30 +477,43 @@
 }
 
 .boho-gift-card {
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(212, 184, 154, 0.35);
-  border-radius: 1.25rem;
-  padding: 1.75rem 1.25rem;
+  background: var(--w-white);
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
+  padding: 2rem 1.5rem;
   text-align: center;
+  position: relative;
+}
+
+.boho-gift-card::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  left: 5px;
+  top: 5px;
+  border: 1px solid var(--w-border);
+  pointer-events: none;
 }
 
 .boho-gift-card span {
-  font-size: 2.25rem;
+  font-size: 2rem;
   display: block;
   margin-bottom: 0.75rem;
 }
 
 .boho-gift-card h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--boho-text);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--w-black);
   margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
 }
 
 .boho-gift-card p {
   font-size: 0.88rem;
-  color: var(--boho-text-muted);
+  color: var(--w-text-muted);
   line-height: 1.55;
 }
 
@@ -487,17 +522,30 @@
 ═══════════════════════════════════════ */
 .boho-rsvp__hint {
   text-align: center;
-  color: var(--boho-text-muted);
-  font-size: 1rem;
+  color: var(--w-text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
   margin-bottom: 2.5rem;
 }
 
 .boho-form {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(212, 184, 154, 0.4);
-  border-radius: 1.5rem;
+  background: var(--w-white);
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
   padding: 2.5rem;
-  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.boho-form::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  border: 1px solid var(--w-border);
+  pointer-events: none;
+  z-index: -1;
 }
 
 @media (max-width: 520px) {
@@ -512,10 +560,12 @@
 
 .boho-form__field label {
   display: block;
-  font-family: "Caveat", cursive;
-  font-size: 1.1rem;
-  color: var(--boho-accent-dark);
-  margin-bottom: 0.5rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--w-black);
+  margin-bottom: 0.6rem;
 }
 
 .boho-form__field input,
@@ -523,10 +573,10 @@
 .boho-form__field textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(212, 184, 154, 0.5);
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--boho-text);
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
+  background: var(--w-white);
+  color: var(--w-text);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1rem;
   outline: none;
@@ -538,8 +588,8 @@
 .boho-form__field input:focus,
 .boho-form__field select:focus,
 .boho-form__field textarea:focus {
-  border-color: var(--boho-accent);
-  box-shadow: 0 0 0 3px rgba(176, 124, 96, 0.15);
+  border-color: var(--w-black);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
 }
 
 .boho-form__row {
@@ -565,15 +615,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
-  border: 1px solid rgba(212, 184, 154, 0.5);
-  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
   cursor: pointer;
-  font-family: "Caveat", cursive;
-  font-size: 1.05rem;
-  color: var(--boho-text-muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  color: var(--w-text-muted);
   transition: all 0.2s;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--w-white);
 }
 
 .boho-radio input {
@@ -581,25 +632,27 @@
 }
 
 .boho-radio.active {
-  background: var(--boho-accent);
-  color: #fff;
-  border-color: var(--boho-accent);
+  background: var(--w-black);
+  color: var(--w-white);
+  border-color: var(--w-black);
 }
 
 /* ── Блок второго гостя ── */
 .boho-guest2-block {
-  border: 1px solid rgba(212, 184, 154, 0.45);
-  border-radius: 1.1rem;
-  padding: 1.25rem 1.25rem 0.25rem;
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
+  padding: 1.5rem 1.5rem 0.25rem;
   margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--w-snow);
 }
 
 .boho-guest2-block__title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--boho-accent-dark);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--w-black);
   margin-bottom: 1rem;
 }
 
@@ -614,13 +667,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.55rem 1.1rem;
-  border: 1px solid rgba(212, 184, 154, 0.55);
-  border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.55);
-  color: var(--boho-text-muted);
-  font-family: "Caveat", cursive;
-  font-size: 1.05rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--w-border-strong);
+  border-radius: 0;
+  background: var(--w-white);
+  color: var(--w-text-muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -628,37 +682,38 @@
 .boho-chip::before {
   content: "";
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 1.5px solid rgba(176, 124, 96, 0.5);
+  border: 1.5px solid var(--w-border-strong);
   background: transparent;
   transition: all 0.2s;
   flex-shrink: 0;
 }
 
 .boho-chip--active {
-  background: var(--boho-accent);
-  color: #fff;
-  border-color: var(--boho-accent);
+  background: var(--w-black);
+  color: var(--w-white);
+  border-color: var(--w-black);
 }
 
 .boho-chip--active::before {
-  background: #fff;
-  border-color: #fff;
+  background: var(--w-white);
+  border-color: var(--w-white);
 }
 
 .boho-submit {
   width: 100%;
   margin-top: 0.5rem;
   padding: 1rem 2rem;
-  background: var(--boho-accent);
-  color: #fff;
+  background: var(--w-black);
+  color: var(--w-white);
   border: none;
-  border-radius: 3rem;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
+  border-radius: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   cursor: pointer;
   transition:
     background 0.2s,
@@ -666,12 +721,12 @@
 }
 
 .boho-submit:hover:not(:disabled) {
-  background: var(--boho-accent-dark);
+  background: var(--w-accent-hover);
   transform: translateY(-1px);
 }
 
 .boho-submit:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -685,26 +740,27 @@
 .boho-rsvp__success {
   text-align: center;
   padding: 3.5rem 2rem;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(212, 184, 154, 0.4);
-  border-radius: 1.5rem;
+  background: var(--w-white);
+  border: 1px solid var(--w-border-strong);
   animation: bohoFadeUp 0.6s ease both;
 }
 
 .boho-rsvp__success-icon {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .boho-rsvp__success h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 2rem;
-  color: var(--boho-text);
+  font-weight: 300;
+  color: var(--w-black);
   margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
 }
 
 .boho-rsvp__success p {
-  color: var(--boho-text-muted);
+  color: var(--w-text-muted);
   font-size: 1.05rem;
 }
 
@@ -712,9 +768,10 @@
    CONTACTS
 ═══════════════════════════════════════ */
 .boho-contacts__text {
-  color: var(--boho-text-muted);
-  font-size: 1.05rem;
+  color: var(--w-text-muted);
+  font-size: 1rem;
   margin-bottom: 2rem;
+  letter-spacing: 0.02em;
 }
 
 .boho-contacts-list {
@@ -728,485 +785,50 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 1.75rem;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(212, 184, 154, 0.35);
-  border-radius: 1rem;
+  padding: 1.1rem 1.75rem;
+  background: var(--w-white);
+  border: 1px solid var(--w-border-strong);
   text-decoration: none;
-  color: var(--boho-text);
+  color: var(--w-text);
   min-width: 280px;
   transition: all 0.2s;
 }
 
 .boho-contact-item:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--w-black);
+  color: var(--w-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(176, 124, 96, 0.15);
-}
-
-.boho-contact-item div {
-  display: flex;
-  flex-direction: column;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.08);
 }
 
 .boho-contact-item__name {
-  font-family: "Caveat", cursive;
-  font-size: 1.05rem;
-  color: var(--boho-accent);
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.1rem;
 }
 
-.boho-contact-item span:last-child {
-  font-size: 0.95rem;
-  color: var(--boho-text-muted);
+.boho-contact-item span:not(.boho-contact-item__name) {
+  font-size: 0.88rem;
+  color: var(--w-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.boho-contact-item:hover span {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ═══════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════ */
 .boho-footer {
-  background: var(--boho-cream);
+  background: var(--w-black);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
-  padding: 0 1.5rem 4rem;
-}
-
-.boho-footer__names {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--boho-text);
-  margin-bottom: 0.4rem;
-}
-
-.boho-footer__date {
-  font-family: "Caveat", cursive;
-  font-size: 1.4rem;
-  color: var(--boho-accent);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.15em;
-}
-
-.boho-footer__tagline {
-  font-size: 0.95rem;
-  color: var(--boho-text-muted);
-  letter-spacing: 0.1em;
-}
-
-/* ═══════════════════════════════════════
-   GUESTS PAGE
-═══════════════════════════════════════ */
-.guests-page {
-  min-height: 100vh;
-  background: var(--boho-cream);
-  padding: 0 1rem 4rem;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  color: var(--boho-text);
-}
-
-.guests-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 0 2rem;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.guests-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--boho-accent);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-family: "Caveat", cursive;
-  font-size: 1.05rem;
-  transition: color 0.2s;
-  white-space: nowrap;
-}
-
-.guests-back:hover {
-  color: var(--boho-accent-dark);
-}
-
-.guests-title {
-  flex: 1;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--boho-text);
-  margin: 0;
-}
-
-.guests-refresh {
-  background: none;
-  border: 1px solid rgba(212, 184, 154, 0.5);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--boho-accent);
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-.guests-refresh:hover {
-  background: rgba(176, 124, 96, 0.1);
-}
-
-.guests-stats {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
-}
-
-.guests-stat {
-  flex: 1;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(212, 184, 154, 0.35);
-  border-radius: 1rem;
-  padding: 1.25rem 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.guests-stat--accent {
-  background: var(--boho-accent);
-  border-color: var(--boho-accent);
-}
-
-.guests-stat--accent .guests-stat__num,
-.guests-stat--accent .guests-stat__label {
-  color: #fff;
-}
-
-.guests-stat--muted {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.guests-stat__num {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--boho-text);
-  line-height: 1;
-}
-
-.guests-stat__label {
-  font-size: 0.82rem;
-  color: var(--boho-text-muted);
-  font-family: sans-serif;
-  letter-spacing: 0.02em;
-}
-
-.guests-section {
-  max-width: 720px;
-  margin: 0 auto 2rem;
-}
-
-.guests-section__title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--boho-accent-dark);
-  font-family: "Caveat", cursive;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.guests-section__title--muted {
-  color: var(--boho-text-muted);
-}
-
-.guests-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.guests-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(212, 184, 154, 0.35);
-  border-radius: 1rem;
-  padding: 1rem 1.25rem;
-}
-
-.guests-card--muted {
-  background: rgba(255, 255, 255, 0.4);
-  opacity: 0.75;
-}
-
-.guests-card__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.75rem;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-.guests-card__name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--boho-text);
-}
-
-.guests-card__date {
-  font-size: 0.8rem;
-  color: var(--boho-text-muted);
-  font-family: sans-serif;
-}
-
-.guests-card__member {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.4rem 0;
-  border-top: 1px solid rgba(212, 184, 154, 0.2);
-  flex-wrap: wrap;
-}
-
-.guests-card__member-name {
-  font-size: 1rem;
-  color: var(--boho-text);
-  min-width: 140px;
-}
-
-.guests-card__drinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.guests-card__drink {
-  background: rgba(176, 124, 96, 0.12);
-  color: var(--boho-accent-dark);
-  border-radius: 2rem;
-  padding: 0.2rem 0.65rem;
-  font-size: 0.82rem;
-  font-family: sans-serif;
-}
-
-.guests-loading,
-.guests-error,
-.guests-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 4rem 1rem;
-  color: var(--boho-text-muted);
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.guests-error button {
-  padding: 0.5rem 1.25rem;
-  border: 1px solid var(--boho-accent);
-  border-radius: 2rem;
-  background: none;
-  color: var(--boho-accent);
-  cursor: pointer;
-  font-family: "Caveat", cursive;
-  font-size: 1.05rem;
-  transition: all 0.2s;
-}
-
-.guests-error button:hover {
-  background: var(--boho-accent);
-  color: #fff;
-}
-
-.guests-gate {
-  min-height: 100vh;
-  background: var(--boho-cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.guests-gate__box {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 184, 154, 0.4);
-  border-radius: 1.5rem;
-  padding: 2.5rem 2rem;
-  width: 100%;
-  max-width: 360px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
-
-.guests-gate__title {
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--boho-text);
-  margin: 0;
-}
-
-.guests-gate__hint {
-  font-size: 0.95rem;
-  color: var(--boho-text-muted);
-  margin: 0;
-  font-family: sans-serif;
-}
-
-.guests-gate__input {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border: 1px solid rgba(212, 184, 154, 0.5);
-  border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  color: var(--boho-text);
-  outline: none;
-  text-align: center;
-  letter-spacing: 0.05em;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.guests-gate__input:focus {
-  border-color: var(--boho-accent);
-}
-
-.guests-gate__input--error {
-  border-color: #c0392b;
-}
-
-.guests-gate__error {
+  padding: 2rem;
   font-size: 0.85rem;
-  color: #c0392b;
-  margin: 0;
-  font-family: sans-serif;
-}
-
-.guests-gate__btn {
-  margin-top: 0.5rem;
-  padding: 0.7rem 2rem;
-  background: var(--boho-accent);
-  color: #fff;
-  border: none;
-  border-radius: 2rem;
-  font-family: "Caveat", cursive;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.guests-gate__btn:hover {
-  background: var(--boho-accent-dark);
-}
-
-/* Password gate */
-.guests-gate {
-  min-height: 100vh;
-  background: var(--boho-cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
-
-.guests-gate__box {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 184, 154, 0.4);
-  border-radius: 1.5rem;
-  padding: 2.5rem 2rem;
-  width: 100%;
-  max-width: 360px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  text-align: center;
-}
-
-.guests-gate__title {
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--boho-text);
-  margin: 0;
-}
-
-.guests-gate__hint {
-  font-size: 0.95rem;
-  color: var(--boho-text-muted);
-  margin: 0 0 0.5rem;
-  font-family: sans-serif;
-}
-
-.guests-gate__input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(212, 184, 154, 0.5);
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  color: var(--boho-text);
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s;
-  font-family: "Cormorant Garamond", Georgia, serif;
   letter-spacing: 0.1em;
-  box-sizing: border-box;
-}
-
-.guests-gate__input:focus {
-  border-color: var(--boho-accent);
-}
-
-.guests-gate__input--error {
-  border-color: #c0392b;
-  animation: shake 0.3s ease;
-}
-
-.guests-gate__error {
-  font-size: 0.85rem;
-  color: #c0392b;
-  font-family: sans-serif;
-  margin: 0;
-}
-
-.guests-gate__btn {
-  margin-top: 0.5rem;
-  padding: 0.65rem 2rem;
-  background: var(--boho-accent);
-  color: #fff;
-  border: none;
-  border-radius: 2rem;
-  font-family: "Caveat", cursive;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.guests-gate__btn:hover {
-  background: var(--boho-accent-dark, #8b5e3c);
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-6px);
-  }
-  75% {
-    transform: translateX(6px);
-  }
+  font-family: "Playfair Display", Georgia, serif;
 }

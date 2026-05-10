@@ -34,7 +34,7 @@ const menuOptions = [
   { id: "white_wine", label: "Вино белое" },
   { id: "whiskey", label: "Виски" },
   { id: "vodka", label: "Водка" },
-  { id: "soft", label: "Безалкогольные напитки" },
+  { id: "martini", label: "Мартини" },
 ];
 
 type FormState = "idle" | "loading" | "success";
@@ -47,6 +47,7 @@ export default function Index() {
     attending: "yes",
     guestName: "",
     guestDrinks: [] as string[],
+    track: "",
   });
   const [formState, setFormState] = useState<FormState>("idle");
   const refWhen = useFadeUp();
@@ -287,6 +288,18 @@ export default function Index() {
                   )}
                 </>
               )}
+
+              <div className="boho-form__field">
+                <label htmlFor="track">Трек, который хотели бы услышать на свадьбе</label>
+                <input
+                  id="track"
+                  name="track"
+                  type="text"
+                  placeholder="Исполнитель — Название песни"
+                  value={form.track}
+                  onChange={handleChange}
+                />
+              </div>
 
               <button type="submit" className="boho-submit" disabled={formState === "loading"}>
                 {formState === "loading" ? (

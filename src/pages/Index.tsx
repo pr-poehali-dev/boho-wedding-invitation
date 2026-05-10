@@ -20,7 +20,6 @@ const RSVP_URL = "https://functions.poehali.dev/9c6624c2-0e9a-428d-8165-89f64ab6
 
 const HERO_IMG        = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/5db35806-c75c-407e-9a4f-2233ed2f9d39.jpg";
 const GYPSOPHILA_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/cbe036f9-9c3d-4d1b-9561-07c6d641373e.jpg";
-const CHANDELIER_IMG  = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/d54d25b7-08dc-4fdd-9f1e-7f962b0b9b9f.jpg";
 
 const WEDDING_DATE = new Date("2026-07-04T16:00:00");
 
@@ -95,7 +94,7 @@ export default function Index() {
         <div className="eng-hero__bg" style={{ backgroundImage: `url(${HERO_IMG})` }} />
         <div className="eng-hero__overlay" />
         <div className="eng-hero__content">
-          <p className="eng-eyebrow">We joyfully invite you to celebrate</p>
+          <p className="eng-eyebrow">Мы счастливы пригласить вас</p>
           <h1 className="eng-hero__names">
             Александр
             <span className="eng-hero__amp">& </span>
@@ -104,7 +103,7 @@ export default function Index() {
           <div className="eng-hero__rule">
             <div className="eng-hero__rule-diamond" />
           </div>
-          <p className="eng-hero__date">4 · July · 2026</p>
+          <p className="eng-hero__date">4 · Июля · 2026</p>
           <p className="eng-hero__sub">Разделите с нами этот особенный день</p>
 
           <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
@@ -130,6 +129,9 @@ export default function Index() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="eng-hero__gypsophila">
+          <img src={GYPSOPHILA_IMG} alt="" />
         </div>
         <a href="#when" className="eng-scroll-hint">
           <Icon name="ChevronDown" size={26} />
@@ -160,11 +162,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* ── CHANDELIER ── */}
-      <div className="eng-chandelier">
-        <img src={CHANDELIER_IMG} alt="" />
-      </div>
 
       {/* ── ПРОГРАММА ── */}
       <section ref={refProgram as React.RefObject<HTMLElement>} className="eng-section eng-section--ivory fade-up" id="program">
@@ -330,9 +327,6 @@ export default function Index() {
 
       {/* ── FOOTER ── */}
       <footer className="eng-footer">
-        <div className="eng-footer__gypsophila">
-          <img src={GYPSOPHILA_IMG} alt="" />
-        </div>
         <p className="eng-footer__names">Александр & Виктория</p>
         <p className="eng-footer__date">4 · 07 · 2026</p>
         <p className="eng-footer__tagline">С любовью ждём вас</p>

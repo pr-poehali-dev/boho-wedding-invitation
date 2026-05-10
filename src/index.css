@@ -627,12 +627,16 @@
 ══════════════════════════════════════════════ */
 .eng-rsvp__hint {
   text-align: center;
-  color: var(--e-muted);
-  font-family: "Jost", sans-serif;
-  font-size: 0.82rem;
-  font-weight: 200;
-  letter-spacing: 0.06em;
+  color: var(--e-charcoal);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   margin-bottom: 2.5rem;
+  padding: 1.1rem 1.5rem;
+  border: 1px solid var(--e-line-str);
+  background: var(--e-linen);
 }
 
 .eng-form {

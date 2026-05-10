@@ -35,18 +35,18 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* ── English Elegant Palette ── */
+    /* ── Black & White Palette ── */
     --e-white: #ffffff;
-    --e-ivory: #faf9f7;
-    --e-linen: #f4f2ee;
-    --e-stone: #e8e5df;
-    --e-fog: #c8c4bc;
-    --e-muted: #8a8278;
-    --e-charcoal: #2c2a27;
-    --e-black: #111010;
-    --e-line: rgba(44, 42, 39, 0.08);
-    --e-line-md: rgba(44, 42, 39, 0.18);
-    --e-line-str: rgba(44, 42, 39, 0.32);
+    --e-ivory: #f7f7f7;
+    --e-linen: #efefef;
+    --e-stone: #e0e0e0;
+    --e-fog: #b0b0b0;
+    --e-muted: #757575;
+    --e-charcoal: #2a2a2a;
+    --e-black: #0a0a0a;
+    --e-line: rgba(0, 0, 0, 0.07);
+    --e-line-md: rgba(0, 0, 0, 0.15);
+    --e-line-str: rgba(0, 0, 0, 0.28);
   }
   * {
     @apply border-border;

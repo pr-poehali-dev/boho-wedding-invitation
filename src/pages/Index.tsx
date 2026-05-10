@@ -390,7 +390,7 @@ export default function Index() {
       {/* ── FOOTER ── */}
       <footer className="boho-footer">
         <div className="boho-divider boho-divider--sm">
-          <img src={FLORAL_DIVIDER} alt="" />
+          <img src={GYPSOPHILA_DIVIDER} alt="" />
         </div>
         <p className="boho-footer__names">Александр & Виктория</p>
         <p className="boho-footer__date">4 · 07 · 2026</p>

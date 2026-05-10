@@ -138,11 +138,6 @@ export default function Index() {
         </a>
       </section>
 
-      {/* ── GYPSOPHILA ── */}
-      <div className="eng-gypsophila">
-        <img src={GYPSOPHILA_IMG} alt="" />
-      </div>
-
       {/* ── КОГДА & ГДЕ ── */}
       <section ref={refWhen as React.RefObject<HTMLElement>} className="eng-section eng-section--white fade-up" id="when">
         <div className="eng-container eng-two-col">
@@ -162,6 +157,11 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* ── GYPSOPHILA ── */}
+      <div className="eng-gypsophila">
+        <img src={GYPSOPHILA_IMG} alt="" />
+      </div>
 
       {/* ── ПРОГРАММА ── */}
       <section ref={refProgram as React.RefObject<HTMLElement>} className="eng-section eng-section--ivory fade-up" id="program">

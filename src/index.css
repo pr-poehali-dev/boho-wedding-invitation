@@ -223,7 +223,53 @@
 }
 
 /* ═══════════════════════════════════════
-   FLORAL DIVIDER
+   COUNTDOWN
+═══════════════════════════════════════ */
+.boho-countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 2rem;
+}
+
+.boho-countdown__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.boho-countdown__num {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300;
+  color: var(--w-black);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.boho-countdown__label {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--w-text-muted);
+  margin-top: 0.3rem;
+}
+
+.boho-countdown__sep {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--w-text-muted);
+  line-height: 1.05;
+  padding: 0 0.1rem;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════
+   DIVIDERS
 ═══════════════════════════════════════ */
 .boho-divider {
   width: 100%;
@@ -234,10 +280,27 @@
 
 .boho-divider img {
   width: 100%;
-  height: 120px;
+  height: 140px;
   object-fit: cover;
   display: block;
-  filter: grayscale(100%) brightness(1.15) contrast(0.85);
+  filter: grayscale(15%) brightness(1.05);
+}
+
+.boho-divider--chandelier {
+  background: var(--w-white);
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  margin: 0;
+  line-height: 0;
+}
+
+.boho-divider--chandelier img {
+  width: auto;
+  max-width: 300px;
+  height: 280px;
+  object-fit: contain;
+  filter: none;
 }
 
 .boho-divider.flipped img {

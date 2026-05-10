@@ -19,7 +19,29 @@ function useFadeUp() {
 const RSVP_URL = "https://functions.poehali.dev/9c6624c2-0e9a-428d-8165-89f64ab6c4e8";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/5db35806-c75c-407e-9a4f-2233ed2f9d39.jpg";
-const FLORAL_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/4724a437-3f87-4ca4-96da-596aa2e75a81.jpg";
+const GYPSOPHILA_DIVIDER = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/3299dbb1-cef7-4ec1-be49-6318f65bccb6.jpg";
+const CHANDELIER_IMG = "https://cdn.poehali.dev/projects/92bc181d-cd5b-4eef-b748-686b087dabef/files/2c22b73d-1259-4a71-9aab-3df65fd0ea23.jpg";
+
+const WEDDING_DATE = new Date("2026-07-04T16:00:00");
+
+function useCountdown() {
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const diff = WEDDING_DATE.getTime() - Date.now();
+    return Math.max(0, diff);
+  });
+  useEffect(() => {
+    const t = setInterval(() => {
+      const diff = WEDDING_DATE.getTime() - Date.now();
+      setTimeLeft(Math.max(0, diff));
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+  const days = Math.floor(timeLeft / 86400000);
+  const hours = Math.floor((timeLeft % 86400000) / 3600000);
+  const minutes = Math.floor((timeLeft % 3600000) / 60000);
+  const seconds = Math.floor((timeLeft % 60000) / 1000);
+  return { days, hours, minutes, seconds };
+}
 
 const schedule = [
   { time: "16:00", title: "Сбор гостей", desc: "Фуршет" },
@@ -50,6 +72,7 @@ export default function Index() {
     track: "",
   });
   const [formState, setFormState] = useState<FormState>("idle");
+  const { days, hours, minutes, seconds } = useCountdown();
   const refWhen = useFadeUp();
   const refProgram = useFadeUp();
   const refRsvp = useFadeUp();
@@ -105,6 +128,27 @@ export default function Index() {
           <div className="boho-hero__divider" />
           <p className="boho-hero__date">4 июля 2026</p>
           <p className="boho-hero__sub">Разделите с нами этот особенный день</p>
+          <div className="boho-countdown">
+            <div className="boho-countdown__item">
+              <span className="boho-countdown__num">{String(days).padStart(2, "0")}</span>
+              <span className="boho-countdown__label">дней</span>
+            </div>
+            <div className="boho-countdown__sep">:</div>
+            <div className="boho-countdown__item">
+              <span className="boho-countdown__num">{String(hours).padStart(2, "0")}</span>
+              <span className="boho-countdown__label">часов</span>
+            </div>
+            <div className="boho-countdown__sep">:</div>
+            <div className="boho-countdown__item">
+              <span className="boho-countdown__num">{String(minutes).padStart(2, "0")}</span>
+              <span className="boho-countdown__label">минут</span>
+            </div>
+            <div className="boho-countdown__sep">:</div>
+            <div className="boho-countdown__item">
+              <span className="boho-countdown__num">{String(seconds).padStart(2, "0")}</span>
+              <span className="boho-countdown__label">секунд</span>
+            </div>
+          </div>
         </div>
         <a href="#when" className="boho-scroll-hint">
           <Icon name="ChevronDown" size={28} />
@@ -113,7 +157,7 @@ export default function Index() {
 
       {/* ── DIVIDER ── */}
       <div className="boho-divider">
-        <img src={FLORAL_DIVIDER} alt="" />
+        <img src={GYPSOPHILA_DIVIDER} alt="" />
       </div>
 
       {/* ── ДАТА & МЕСТО ── */}
@@ -143,8 +187,8 @@ export default function Index() {
       </section>
 
       {/* ── DIVIDER ── */}
-      <div className="boho-divider flipped">
-        <img src={FLORAL_DIVIDER} alt="" />
+      <div className="boho-divider boho-divider--chandelier">
+        <img src={CHANDELIER_IMG} alt="" />
       </div>
 
       {/* ── ПРОГРАММА ── */}
@@ -169,7 +213,7 @@ export default function Index() {
 
       {/* ── DIVIDER ── */}
       <div className="boho-divider">
-        <img src={FLORAL_DIVIDER} alt="" />
+        <img src={GYPSOPHILA_DIVIDER} alt="" />
       </div>
 
       {/* ── RSVP ── */}
